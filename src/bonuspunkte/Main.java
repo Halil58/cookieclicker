@@ -1,7 +1,12 @@
 package bonuspunkte;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -20,6 +25,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class Main extends Application {
 
@@ -31,7 +37,7 @@ public class Main extends Application {
 			Stage window;
 			Scene gameScene;
 			private String chosen;
-			
+			Label amount = new Label();
 			private int GRANPRICE = 50;
 			private int BAKPRICE = 500;
 			private int FACPRICE = 5000;
@@ -56,7 +62,7 @@ public class Main extends Application {
 				 border.setCenter(vbox);
 				 
 				 
-				 Text Tcookie = new Text(25, 25,"--------");
+				 Text Tcookie = new Text(25, 25,"COOKIE MONSTER");
 				 Tcookie.setFill(Color.CHOCOLATE);
 				 Tcookie.setFont(Font.font(java.awt.Font.MONOSPACED, 100));
 			      
@@ -66,7 +72,7 @@ public class Main extends Application {
 				 
 				 
 				Button playB = new Button("Play!");
-				playB.setPrefSize(100, 20);
+				playB.setPrefSize(100, 30);
 				playB.setOnAction(e -> window.setScene(gameScene));
 				
 				
@@ -80,11 +86,11 @@ public class Main extends Application {
 			    
 			    
 //				Button readme = new Button("Anleitung");
-				readme.setPrefHeight(20);
+				readme.setPrefHeight(30);
 				
 				
 				Button end = new Button ("Quit");
-				end.setPrefSize(100, 20);
+				end.setPrefSize(100, 30);
 				end.setOnAction(e-> Platform.exit());
 				
 				Label leer = new Label();
@@ -117,9 +123,11 @@ public class Main extends Application {
 				 grid.setVgap(6); //8
 				 grid.setHgap(6); //10
 				 
+				 bindToTime();
+				 
 				
 				 
-				 Label amount = new Label();
+				
 				 amount.setFont(Font.font(50));
 				 amount.setText(String.valueOf(0));
 				 GridPane.setConstraints(amount,90,20);
@@ -264,36 +272,6 @@ public class Main extends Application {
 					}});
 				 
 				 
-				 
-				 
-				 
-				 
-				 
-				 
-				 
-				 
-				 
-				 // KoordinatenTester
-				 
-				 Label K1 = new Label ("10");
-				 GridPane.setConstraints(K1, 10, 10);
-				 
-				 Label K2 = new Label ("30");
-				 GridPane.setConstraints(K2, 30, 30);
-				 
-				 Label K3 = new Label ("50");
-				 GridPane.setConstraints(K3, 50, 50);
-				 
-				 Label K4 = new Label ("70");
-				 GridPane.setConstraints(K4, 70, 70);
-				 
-				 Label K5 = new Label ("90");
-				 GridPane.setConstraints(K5, 90, 90);
-				 
-				 
-				 
-				 
-				 
 				 grid.getChildren().addAll(ccount,amount,clicker,grandmaL,bakerL,factoryL,atomL,alienL,
 						 grandmaText,bakerText,factoryText,atomText,alienText,grandmaB,grandmaCount,bakerB,bakerCount,
 						 factoryB,factoryCount,atomB,atomCount,alienB,alienCount,producer,buy,costings,count);
@@ -312,8 +290,44 @@ public class Main extends Application {
 				 }if(chosen.equals("English")){
 				 	System.out.println("E");}				//auf E
 			 }
-			 
-			 
+			
+	//-------------------------Copy StackOverflow------- Für SekundenUpdate		 
+			 private void bindToTime() {
+				    Timeline timeline = new Timeline(
+				      new KeyFrame(Duration.seconds(0),
+				        new EventHandler<ActionEvent>() {
+				          @Override public void handle(ActionEvent actionEvent) {
+
+				            							            
+				    			money = money + (grandma*1 + baker*10 + factory*100 + atom*1000 + alien*10000); 
+				    			System.out.println(money);
+				    			amount.setText(""+money);
+				          }
+				        }
+				      ),
+				      new KeyFrame(Duration.seconds(1))
+				    );
+				    timeline.setCycleCount(Animation.INDEFINITE);
+				    timeline.play();
+				  }
 			 
 
 }
+class StringUtilities {
+	  /**
+	   * Creates a string left padded to the specified width with the supplied padding character.
+	   * @param fieldWidth the length of the resultant padded string.
+	   * @param padChar a character to use for padding the string.
+	   * @param s the string to be padded.
+	   * @return the padded string.
+	   */
+	  public static String pad(int fieldWidth, char padChar, String s) {
+	    StringBuilder sb = new StringBuilder();
+	    for (int i = s.length(); i < fieldWidth; i++) {
+	      sb.append(padChar);
+	    }
+	    sb.append(s);
+
+	    return sb.toString();
+	  }
+	}
