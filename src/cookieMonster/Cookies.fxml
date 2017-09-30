@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.input.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="344.0" prefWidth="547.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="cl" mnemonicParsing="false" onAction="#close" text="Close">
+                     <accelerator>
+                        <KeyCodeCombination alt="ANY" code="ESCAPE" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem fx:id="re" mnemonicParsing="false" onAction="#restart" text="Restart">
+                     <accelerator>
+                        <KeyCodeCombination alt="ANY" code="R" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+            </items>
+          </Menu>
+          <Menu fx:id="about" mnemonicParsing="false" onAction="#Help" text="Help">
+            <items>
+              <MenuItem fx:id="about" mnemonicParsing="false" onAction="#Help" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <left>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Region prefHeight="43.0" prefWidth="100.0" />
+            <Label fx:id="b1" text="Grandma" />
+            <Region prefHeight="42.0" prefWidth="100.0" />
+            <Label fx:id="b2" layoutX="10.0" layoutY="10.0" text="Baker" />
+            <Region prefHeight="43.0" prefWidth="100.0" />
+            <Label fx:id="b3" layoutX="10.0" layoutY="27.0" text="Factory" />
+            <Region prefHeight="40.0" prefWidth="100.0" />
+            <Label fx:id="b4" layoutX="10.0" layoutY="44.0" text="Atomic Plant" />
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <VBox prefHeight="291.0" prefWidth="182.0" BorderPane.alignment="CENTER">
+         <children>
+            <Region prefHeight="38.0" prefWidth="400.0" />
+            <HBox prefHeight="60.0" prefWidth="84.0">
+               <children>
+                  <Button fx:id="b1B" mnemonicParsing="false" onAction="#granny" text="+1" />
+                  <Region prefHeight="60.0" prefWidth="10.0" />
+                  <Label fx:id="bNr1" text="0" />
+                  <Region prefHeight="60.0" prefWidth="27.0" />
+                  <Label fx:id="b1c" prefHeight="17.0" prefWidth="179.0" text="Price: 50 Clicks (1 C/sec)" />
+               </children>
+            </HBox>
+            <HBox prefHeight="60.0" prefWidth="400.0">
+               <children>
+                  <Button fx:id="b2B" mnemonicParsing="false" onAction="#bake" text="+1" />
+                  <Region prefHeight="60.0" prefWidth="10.0" />
+                  <Label fx:id="bNr2" text="0" />
+                  <Region prefHeight="200.0" prefWidth="27.0" />
+                  <Label fx:id="b2c" text="Price: 500 Clicks (10C/sec)" />
+               </children>
+            </HBox>
+            <HBox prefHeight="55.0" prefWidth="400.0">
+               <children>
+                  <Button fx:id="b3B" mnemonicParsing="false" onAction="#fact" text="+1" />
+                  <Region prefHeight="60.0" prefWidth="10.0" />
+                  <Label fx:id="bNr3" text="0" />
+                  <Region prefHeight="200.0" prefWidth="27.0" />
+                  <Label fx:id="b3c" text="Price: 5000 Clicks (100C/sec)" />
+               </children>
+            </HBox>
+            <HBox prefHeight="87.0" prefWidth="400.0">
+               <children>
+                  <Button fx:id="b4B" mnemonicParsing="false" onAction="#atom" text="+1" />
+                  <Region prefHeight="60.0" prefWidth="10.0" />
+                  <Label fx:id="bNr4" text="0" />
+                  <Region prefHeight="200.0" prefWidth="27.0" />
+                  <Label fx:id="b4c" text="Price: 50'000 (1000C/sec)" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <Label text="COOKIE-MONSTER ©" BorderPane.alignment="CENTER" />
+   </bottom>
+   <right>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Region prefHeight="45.0" prefWidth="100.0" />
+            <Label fx:id="amount" text="0">
+               <font>
+                  <Font name="System Bold" size="31.0" />
+               </font></Label>
+            <Region prefHeight="92.0" prefWidth="100.0" />
+            <Button fx:id="clicker" mnemonicParsing="false" onAction="#Click" prefHeight="59.0" prefWidth="80.0" text="Click!">
+               <effect>
+                  <GaussianBlur radius="0.0" />
+               </effect></Button>
+            <Pane prefHeight="64.0" prefWidth="47.0" />
+         </children>
+      </VBox>
+   </right>
+</BorderPane>
